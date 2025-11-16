@@ -1,0 +1,210 @@
+/* === A83 Nav-Card Anti-Center Hardening ===================== */
+
+
+/* Falls Overlay vom Theme/Builder irgendwo als Flex/Grid zentriert wurde: entwaffnen */
+/* Falls Overlay vom Theme/Builder irgendwo als Flex/Grid zentriert wurde: entwaffnen */
+#nav-overlay{
+#nav-overlay{
+  display: block !important;
+  display: block !important;
+  align-items: normal !important;
+  align-items: normal !important;
+  justify-content: normal !important;
+  justify-content: normal !important;
+  place-items: initial !important;
+  place-items: initial !important;
+  text-align: initial !important;
+  text-align: initial !important;
+}
+}
+
+
+/* Karte *hart* oben rechts pinnen – unabhängig von Eltern-Layout */
+/* Karte *hart* oben rechts pinnen – unabhängig von Eltern-Layout */
+#nav-overlay > .nav-card{
+#nav-overlay > .nav-card{
+  position: fixed !important;
+  position: fixed !important;
+  top: max(var(--header-h, 52px), clamp(12px, 2vw, 24px)) !important;
+  top: max(var(--header-h, 52px), clamp(12px, 2vw, 24px)) !important;
+  right: clamp(12px, 2vw, 24px) !important;
+  right: clamp(12px, 2vw, 24px) !important;
+  left: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+  margin: 0 !important;
+  transform-origin: top right !important;
+  transform-origin: top right !important;
+}
+}
+
+
+/* Kein „Center durch Containerbreite“: Sicherheitsnetz bei Breakpoint-Regeln */
+/* Kein „Center durch Containerbreite“: Sicherheitsnetz bei Breakpoint-Regeln */
+#nav-overlay > .nav-card{
+#nav-overlay > .nav-card{
+  max-width: none !important;   /* Breite kommt von width/min() weiter oben */
+  max-width: none !important;   /* Breite kommt von width/min() weiter oben */
+}
+}
+
+
+/* Brandmark ist reines Deko-Layer unter Inhalt */
+/* Brandmark ist reines Deko-Layer unter Inhalt */
+#nav-overlay .nav-card{ position: relative !important; overflow: hidden !important; }
+#nav-overlay .nav-card{ position: relative !important; overflow: hidden !important; }
+#nav-overlay .nav-card #nav-brandmark{
+#nav-overlay .nav-card #nav-brandmark{
+  position: absolute !important;
+  position: absolute !important;
+  inset: 0 !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  pointer-events: none !important;
+}
+}
+
+
+/* Inhalt der Karte liegt sicher über dem Brandmark */
+/* Inhalt der Karte liegt sicher über dem Brandmark */
+#nav-overlay .nav-card > *:not(#nav-brandmark){
+#nav-overlay .nav-card > *:not(#nav-brandmark){
+  position: relative;
+  position: relative;
+  z-index: 1;
+  z-index: 1;
+}
+}
+
+
+/* Falls irgendwo „text-align:center“ reinfunkt (Themes lieben das): neutralisieren */
+/* Falls irgendwo „text-align:center“ reinfunkt (Themes lieben das): neutralisieren */
+#nav-overlay .nav-head,
+#nav-overlay .nav-head,
+#nav-overlay .nav-menu{
+#nav-overlay .nav-menu{
+  text-align: initial !important;
+  text-align: initial !important;
+  justify-items: initial !important;
+  justify-items: initial !important;
+  justify-content: initial !important;
+  justify-content: initial !important;
+}
+}
+
+
+/* Für den (seltenen) Fall, dass .nav-card vom Builder als Flex/Grid gesetzt wurde: */
+/* Für den (seltenen) Fall, dass .nav-card vom Builder als Flex/Grid gesetzt wurde: */
+#nav-overlay .nav-card{
+#nav-overlay .nav-card{
+  display: block !important; /* verhindert zentrierende place-items/justify-content */
+  display: block !important; /* verhindert zentrierende place-items/justify-content */
+}
+}
+
+
+
+
+#nav-overlay .nav-card{
+#nav-overlay .nav-card{
+  isolation: isolate; /* verhindert, dass mix-blend-mode Eltern beeinflusst */
+  isolation: isolate; /* verhindert, dass mix-blend-mode Eltern beeinflusst */
+}
+}
+#nav-overlay .nav-card #nav-brandmark{
+#nav-overlay .nav-card #nav-brandmark{
+  opacity: .06; /* subtler = weniger Risiko für Theme-Styles mit blend-Interaktionen */
+  opacity: .06; /* subtler = weniger Risiko für Theme-Styles mit blend-Interaktionen */
+}
+}
+
+
+/* === A83 NAV-CARD: HARD TOP-RIGHT ANCHOR (kills BD center rules) === */
+/* === A83 NAV-CARD: HARD TOP-RIGHT ANCHOR (kills BD center rules) === */
+#nav-overlay .nav-card{
+#nav-overlay .nav-card{
+  position: fixed !important;
+  position: fixed !important;
+
+
+  /* alles zurücksetzen und bewusst oben rechts setzen */
+  /* alles zurücksetzen und bewusst oben rechts setzen */
+  inset: auto auto auto auto !important;        /* reset */
+  inset: auto auto auto auto !important;        /* reset */
+  top: max(var(--header-h,52px), clamp(12px,2vw,24px)) !important;
+  top: max(var(--header-h,52px), clamp(12px,2vw,24px)) !important;
+  right: clamp(12px, 2vw, 24px) !important;
+  right: clamp(12px, 2vw, 24px) !important;
+  bottom: auto !important;
+  bottom: auto !important;
+  left: auto !important;
+  left: auto !important;
+
+
+  /* jedes "zentriere mich" killen */
+  /* jedes "zentriere mich" killen */
+  margin: 0 !important;
+  margin: 0 !important;
+  max-width: none !important;                    /* falls BD ein max-width setzt */
+  max-width: none !important;                    /* falls BD ein max-width setzt */
+  transform: translate(var(--from-x), var(--from-y)) scale(var(--from-scale)); /* deine Startwerte bleiben */
+  transform: translate(var(--from-x), var(--from-y)) scale(var(--from-scale)); /* deine Startwerte bleiben */
+  transform-origin: top right !important;
+  transform-origin: top right !important;
+}
+}
+
+
+/* Falls ein zentrierender Inline-Style reingrätscht (left:50% / translateX(-50%)) */
+/* Falls ein zentrierender Inline-Style reingrätscht (left:50% / translateX(-50%)) */
+#nav-overlay .nav-card[style*="left: 50%"]{
+#nav-overlay .nav-card[style*="left: 50%"]{
+  left: auto !important;
+  left: auto !important;
+  transform: none !important;
+  transform: none !important;
+}
+}
+
+
+/* Sicherheitsnetz: logische Properties für RTL/LTR */
+/* Sicherheitsnetz: logische Properties für RTL/LTR */
+#nav-overlay .nav-card{
+#nav-overlay .nav-card{
+  inset-inline-end: clamp(12px, 2vw, 24px) !important;
+  inset-inline-end: clamp(12px, 2vw, 24px) !important;
+  inset-inline-start: auto !important;
+  inset-inline-start: auto !important;
+}
+}
+
+
+/* Nur falls ein elterliches BD-Wrapper-Element versucht, Kinder zu zentrieren */
+/* Nur falls ein elterliches BD-Wrapper-Element versucht, Kinder zu zentrieren */
+#nav-overlay{
+#nav-overlay{
+  display: block !important;        /* vermeidet grid/flex-centering von Kindern */
+  display: block !important;        /* vermeidet grid/flex-centering von Kindern */
+  place-items: initial !important;
+  place-items: initial !important;
+  justify-items: initial !important;
+  justify-items: initial !important;
+  align-items: initial !important;
+  align-items: initial !important;
+}
+}
+
+
+
+
+
+
+
+
+
+
+/* === A83 Tone Bridge — koppelt Wordmark & Burger an data-tone ================= */

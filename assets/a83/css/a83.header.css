@@ -1,0 +1,252 @@
+/* ===== WORDMARK ===== */
+.brand-wordmark{
+.brand-wordmark{
+  color: var(--nav-wordmark);
+  color: var(--nav-wordmark);
+  font-size: clamp(18px, 3vw, 22px);
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 700;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-decoration: none;
+  position: relative;
+  position: relative;
+  opacity: 0.65; /* dimmed by default */
+  opacity: 0.65; /* dimmed by default */
+  transition: opacity 0.3s var(--ease), filter 0.2s var(--ease);
+  transition: opacity 0.3s var(--ease), filter 0.2s var(--ease);
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.25));
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.25));
+  cursor: pointer;
+  cursor: pointer;
+  backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: opacity, filter;
+  will-change: opacity, filter;
+  white-space: wrap; /* PREVENT LINE BREAK */
+  white-space: wrap; /* PREVENT LINE BREAK */
+  display: inline-block; /* ensure proper rendering */
+  display: inline-block; /* ensure proper rendering */
+}
+}
+
+
+#site-header[data-tone="light"] .brand-wordmark{
+#site-header[data-tone="light"] .brand-wordmark{
+  filter: drop-shadow(0 0 1px rgba(255,255,255,.25));
+  filter: drop-shadow(0 0 1px rgba(255,255,255,.25));
+}
+}
+
+
+/* Hover: full opacity + quick glitch */
+/* Hover: full opacity + quick glitch */
+.brand-wordmark:hover{
+.brand-wordmark:hover{
+  opacity: 1;
+  opacity: 1;
+}
+}
+.brand-wordmark:hover::before,
+.brand-wordmark:hover::before,
+.brand-wordmark:hover::after{
+.brand-wordmark:hover::after{
+  content: attr(data-text);
+  content: attr(data-text);
+  position: absolute;
+  position: absolute;
+  left: 0;
+  left: 0;
+  top: 0;
+  top: 0;
+  pointer-events: none;
+  pointer-events: none;
+  opacity: 0.6; /* reduced from 0.7 */
+  opacity: 0.6; /* reduced from 0.7 */
+  mix-blend-mode: screen;
+  mix-blend-mode: screen;
+  white-space: wrap; /* prevent line break */
+  white-space: wrap; /* prevent line break */
+}
+}
+.brand-wordmark:hover::before{
+.brand-wordmark:hover::before{
+  color: #0ff;
+  color: #0ff;
+  animation: a83-wordmark-glitch-small 240ms steps(6) 1; /* smaller, faster */
+  animation: a83-wordmark-glitch-small 240ms steps(6) 1; /* smaller, faster */
+}
+}
+.brand-wordmark:hover::after{
+.brand-wordmark:hover::after{
+  color: #f0f;
+  color: #f0f;
+  animation: a83-wordmark-glitch-alt-small 240ms steps(6) 1; /* smaller, faster */
+  animation: a83-wordmark-glitch-alt-small 240ms steps(6) 1; /* smaller, faster */
+}
+}
+
+
+@keyframes a83-wordmark-glitch-small{
+@keyframes a83-wordmark-glitch-small{
+  0%{ transform: translate(0,0); }
+  0%{ transform: translate(0,0); }
+  25%{ transform: translate(1px,0); } /* reduced from 2px */
+  25%{ transform: translate(1px,0); } /* reduced from 2px */
+  50%{ transform: translate(-0.5px,0); } /* reduced from -1px */
+  50%{ transform: translate(-0.5px,0); } /* reduced from -1px */
+  75%{ transform: translate(0.5px,0); } /* reduced from 1px */
+  75%{ transform: translate(0.5px,0); } /* reduced from 1px */
+  100%{ transform: translate(0,0); }
+  100%{ transform: translate(0,0); }
+}
+}
+@keyframes a83-wordmark-glitch-alt-small{
+@keyframes a83-wordmark-glitch-alt-small{
+  0%{ transform: translate(0,0); }
+  0%{ transform: translate(0,0); }
+  25%{ transform: translate(-1px,0); } /* reduced from -2px */
+  25%{ transform: translate(-1px,0); } /* reduced from -2px */
+  50%{ transform: translate(0.5px,0); } /* reduced from 1px */
+  50%{ transform: translate(0.5px,0); } /* reduced from 1px */
+  75%{ transform: translate(-0.5px,0); } /* reduced from -1px */
+  75%{ transform: translate(-0.5px,0); } /* reduced from -1px */
+  100%{ transform: translate(0,0); }
+  100%{ transform: translate(0,0); }
+}
+}
+
+
+/* Initial load glitch (triggered by JS via .wordmark-init class) */
+/* Initial load glitch (triggered by JS via .wordmark-init class) */
+.brand-wordmark.wordmark-init{
+.brand-wordmark.wordmark-init{
+  animation: a83-wordmark-init 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: a83-wordmark-init 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+}
+@keyframes a83-wordmark-init{
+@keyframes a83-wordmark-init{
+  0%{ 
+  0%{ 
+    opacity: 0; 
+    opacity: 0; 
+    transform: translateY(-4px) scale(0.96); 
+    transform: translateY(-4px) scale(0.96); 
+    filter: blur(4px) saturate(0.5);
+    filter: blur(4px) saturate(0.5);
+  }
+  }
+  40%{
+  40%{
+    opacity: 0.4;
+    opacity: 0.4;
+    filter: blur(2px) saturate(1.2);
+    filter: blur(2px) saturate(1.2);
+  }
+  }
+  60%{
+  60%{
+    opacity: 1;
+    opacity: 1;
+    filter: saturate(1.4) contrast(1.1);
+    filter: saturate(1.4) contrast(1.1);
+  }
+  }
+  100%{ 
+  100%{ 
+    opacity: 0.65; 
+    opacity: 0.65; 
+    transform: none; 
+    transform: none; 
+    filter: none;
+    filter: none;
+  }
+  }
+}
+}
+
+
+/* Add glitch pseudos during init */
+/* Add glitch pseudos during init */
+.brand-wordmark.wordmark-init::before,
+.brand-wordmark.wordmark-init::before,
+.brand-wordmark.wordmark-init::after{
+.brand-wordmark.wordmark-init::after{
+  content: attr(data-text);
+  content: attr(data-text);
+  position: absolute;
+  position: absolute;
+  left: 0;
+  left: 0;
+  top: 0;
+  top: 0;
+  pointer-events: none;
+  pointer-events: none;
+  opacity: 0.85;
+  opacity: 0.85;
+  mix-blend-mode: screen;
+  mix-blend-mode: screen;
+}
+}
+.brand-wordmark.wordmark-init::before{
+.brand-wordmark.wordmark-init::before{
+  color: #0ff;
+  color: #0ff;
+  animation: a83-init-shift 620ms steps(12) 1;
+  animation: a83-init-shift 620ms steps(12) 1;
+}
+}
+.brand-wordmark.wordmark-init::after{
+.brand-wordmark.wordmark-init::after{
+  color: #f0f;
+  color: #f0f;
+  animation: a83-init-shift-alt 620ms steps(12) 1;
+  animation: a83-init-shift-alt 620ms steps(12) 1;
+}
+}
+
+
+@keyframes a83-init-shift{
+@keyframes a83-init-shift{
+  0%,100%{ transform: translate(0,0); opacity: 0.85; }
+  0%,100%{ transform: translate(0,0); opacity: 0.85; }
+  15%{ transform: translate(3px,-1px); }
+  15%{ transform: translate(3px,-1px); }
+  30%{ transform: translate(-2px,1px); }
+  30%{ transform: translate(-2px,1px); }
+  45%{ transform: translate(2px,0); }
+  45%{ transform: translate(2px,0); }
+  60%{ transform: translate(-3px,0); }
+  60%{ transform: translate(-3px,0); }
+  75%{ transform: translate(1px,-1px); }
+  75%{ transform: translate(1px,-1px); }
+  90%{ opacity: 0; }
+  90%{ opacity: 0; }
+}
+}
+@keyframes a83-init-shift-alt{
+@keyframes a83-init-shift-alt{
+  0%,100%{ transform: translate(0,0); opacity: 0.85; }
+  0%,100%{ transform: translate(0,0); opacity: 0.85; }
+  15%{ transform: translate(-3px,1px); }
+  15%{ transform: translate(-3px,1px); }
+  30%{ transform: translate(2px,-1px); }
+  30%{ transform: translate(2px,-1px); }
+  45%{ transform: translate(-2px,0); }
+  45%{ transform: translate(-2px,0); }
+  60%{ transform: translate(3px,0); }
+  60%{ transform: translate(3px,0); }
+  75%{ transform: translate(-1px,1px); }
+  75%{ transform: translate(-1px,1px); }
+  90%{ opacity: 0; }
+  90%{ opacity: 0; }
+}
+}
+
+
+/* ===== BURGER ===== */

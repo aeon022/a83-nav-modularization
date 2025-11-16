@@ -1,0 +1,39 @@
+:root{
+  --brand: var(--hcl-ruby-9,#e54666);
+  --card-bg: color-mix(in oklab,var(--brand) 12%, rgba(12,16,14,.82));
+  --card-bd: color-mix(in oklab,var(--brand) 32%, rgba(229,70,102,.28));
+  --dim: rgba(10,14,12,.55);
+
+  --ease: cubic-bezier(.2,.8,.2,1);
+  --t-burger: 350ms;
+  --t-card: 680ms;
+  --t-card-out: 420ms;
+  --t-backdrop-out: 320ms;
+  --t-close-gap: 60ms;
+
+  --radius: 20px;
+  --shadow: 0 12px 40px rgba(0,0,0,.35);
+
+  /* Wild Glitch */
+  --glitch-card-dur: 640ms;
+  --glitch-link-dur: 520ms;
+
+  /* Header */
+  --header-h: 52px;
+  
+  /* Wordmark & Burger Colors (adaptive) */
+  --nav-wordmark: var(--hcl-ruby-9, #e54666);
+  --nav-burger: var(--hcl-ruby-9, #e54666);
+}
+:root{
+  --a83-burger-size: 28px;
+  --a83-burger-thick: 2px;
+  --a83-burger-gap: 6px;
+  --a83-burger-dur: 320ms;
+  --a83-ease: cubic-bezier(.2,.8,.2,1);
+  --burger-reset-dur: 420ms;
+}
+:root{
+  --safe-left: 0px;
+  --safe-bottom: 0px;
+}

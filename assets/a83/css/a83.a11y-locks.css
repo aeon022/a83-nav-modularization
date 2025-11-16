@@ -1,0 +1,124 @@
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+@media (prefers-reduced-motion: reduce){
+  #nav-overlay .nav-card.glitch,
+  #nav-overlay .nav-card.glitch,
+  #nav-overlay .nav-card.glitch-strong,
+  #nav-overlay .nav-card.glitch-strong,
+  #nav-overlay .nav-card .gl-slices,
+  #nav-overlay .nav-card .gl-slices,
+  #nav-overlay .nav-menu.glitch-once::before,
+  #nav-overlay .nav-menu.glitch-once::before,
+  #nav-overlay .nav-menu.glitch-once::after,
+  #nav-overlay .nav-menu.glitch-once::after,
+  .brand-wordmark.wordmark-init,
+  .brand-wordmark.wordmark-init,
+  #nav-trigger.burger-init,
+  #nav-trigger.burger-init,
+  .a83-burger.burger-init{
+  .a83-burger.burger-init{
+    animation: none !important;
+    animation: none !important;
+    transition: none !important;
+    transition: none !important;
+  }
+  }
+  
+  
+  .a83-burger-inner,
+  .a83-burger-inner,
+  .a83-burger-inner::before,
+  .a83-burger-inner::before,
+  .a83-burger-inner::after{
+  .a83-burger-inner::after{
+    transition: none !important;
+    transition: none !important;
+  }
+  }
+}
+}
+
+
+/* Body lock */
+/* Body lock */
+html.nav-lock{
+html.nav-lock{
+  overflow: hidden;
+  overflow: hidden;
+  padding-right: var(--sbw, 0);
+  padding-right: var(--sbw, 0);
+}
+}
+
+
+.nav-fixed{
+.nav-fixed{
+  position: fixed;
+  position: fixed;
+  width: 100%;
+  width: 100%;
+  overflow: hidden;
+  overflow: hidden;
+}
+}
+
+
+
+
+/* Safe-Area für Safari/iOS: schiebt den Hint aus der Status-/Toolbar */
+/* Safe-Area für Safari/iOS: schiebt den Hint aus der Status-/Toolbar */
+:root{
+:root{
+  --safe-left: 0px;
+  --safe-left: 0px;
+  --safe-bottom: 0px;
+  --safe-bottom: 0px;
+}
+}
+/* Legacy iOS 11 */
+/* Legacy iOS 11 */
+@supports (padding: constant(safe-area-inset-bottom)) {
+@supports (padding: constant(safe-area-inset-bottom)) {
+  :root{
+  :root{
+    --safe-left:   constant(safe-area-inset-left);
+    --safe-left:   constant(safe-area-inset-left);
+    --safe-bottom: constant(safe-area-inset-bottom);
+    --safe-bottom: constant(safe-area-inset-bottom);
+  }
+  }
+}
+}
+/* Moderne iOS/Safari */
+/* Moderne iOS/Safari */
+@supports (padding: env(safe-area-inset-bottom)) {
+@supports (padding: env(safe-area-inset-bottom)) {
+  :root{
+  :root{
+    --safe-left:   env(safe-area-inset-left);
+    --safe-left:   env(safe-area-inset-left);
+    --safe-bottom: env(safe-area-inset-bottom);
+    --safe-bottom: env(safe-area-inset-bottom);
+  }
+  }
+}
+}
+
+
+/* Override: Hint-Position mit Safe-Area addieren */
+/* Override: Hint-Position mit Safe-Area addieren */
+#nav-overlay .nav-hint{
+#nav-overlay .nav-hint{
+  left:   calc(clamp(12px, 2vw, 24px) + var(--safe-left)) !important;
+  left:   calc(clamp(12px, 2vw, 24px) + var(--safe-left)) !important;
+  bottom: calc(clamp(32px, 2vh, 24px) + var(--safe-bottom) + 6px) !important;
+  bottom: calc(clamp(32px, 2vh, 24px) + var(--safe-bottom) + 6px) !important;
+}
+}
+
+
+
+
+
+
+/* ===== BRAND WATERMARK (from menucard-brand-watermark-addon-v1.css) ===== */

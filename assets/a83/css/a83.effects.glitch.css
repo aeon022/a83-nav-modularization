@@ -1,0 +1,96 @@
+/* Glitch effects */
+#nav-overlay .nav-card.glitch,
+#nav-overlay .nav-card.glitch,
+#nav-overlay .nav-card.glitch-strong{
+#nav-overlay .nav-card.glitch-strong{
+  animation: a83-card-pulse var(--glitch-card-dur) cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: a83-card-pulse var(--glitch-card-dur) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+}
+
+
+@keyframes a83-card-pulse{
+@keyframes a83-card-pulse{
+  0%{ filter: saturate(1); }
+  0%{ filter: saturate(1); }
+  30%{ filter: saturate(1.4) contrast(1.1); }
+  30%{ filter: saturate(1.4) contrast(1.1); }
+  60%{ filter: saturate(1.5) contrast(1.15) hue-rotate(2deg); }
+  60%{ filter: saturate(1.5) contrast(1.15) hue-rotate(2deg); }
+  100%{ filter: saturate(1); }
+  100%{ filter: saturate(1); }
+}
+}
+
+
+/* Slice glitch */
+/* Slice glitch */
+.gl-slices{
+.gl-slices{
+  position: absolute;
+  position: absolute;
+  inset: 0;
+  inset: 0;
+  pointer-events: none;
+  pointer-events: none;
+  z-index: 5;
+  z-index: 5;
+  overflow: hidden;
+  overflow: hidden;
+}
+}
+
+
+.gl-slice{
+.gl-slice{
+  position: absolute;
+  position: absolute;
+  left: 0;
+  left: 0;
+  right: 0;
+  right: 0;
+  background: linear-gradient(90deg, 
+  background: linear-gradient(90deg, 
+    rgba(0,255,255,0.15) 0%, 
+    rgba(0,255,255,0.15) 0%, 
+    transparent 50%, 
+    transparent 50%, 
+    rgba(255,0,128,0.15) 100%);
+    rgba(255,0,128,0.15) 100%);
+  mix-blend-mode: screen;
+  mix-blend-mode: screen;
+  will-change: transform;
+  will-change: transform;
+}
+}
+
+
+@keyframes a83-slice-shift{
+@keyframes a83-slice-shift{
+  0%,100%{ transform: translateX(0); }
+  0%,100%{ transform: translateX(0); }
+  25%{ transform: translateX(4px); }
+  25%{ transform: translateX(4px); }
+  50%{ transform: translateX(-3px); }
+  50%{ transform: translateX(-3px); }
+  75%{ transform: translateX(2px); }
+  75%{ transform: translateX(2px); }
+}
+}
+
+
+@keyframes a83-slice-skew{
+@keyframes a83-slice-skew{
+  0%,100%{ transform: skewX(0deg) translateX(0); }
+  0%,100%{ transform: skewX(0deg) translateX(0); }
+  25%{ transform: skewX(0.5deg) translateX(3px); }
+  25%{ transform: skewX(0.5deg) translateX(3px); }
+  50%{ transform: skewX(-0.5deg) translateX(-4px); }
+  50%{ transform: skewX(-0.5deg) translateX(-4px); }
+  75%{ transform: skewX(0.3deg) translateX(2px); }
+  75%{ transform: skewX(0.3deg) translateX(2px); }
+}
+}
+
+
+/* Reduced motion */

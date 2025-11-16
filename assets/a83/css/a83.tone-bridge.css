@@ -1,0 +1,83 @@
+/* === A83 Tone Bridge — koppelt Wordmark & Burger an data-tone ================= */
+
+
+/* Default-Werte (falls nichts gesetzt) */
+/* Default-Werte (falls nichts gesetzt) */
+#site-header{
+#site-header{
+  --nav-wordmark: var(--hcl-brand-1, #fff);
+  --nav-wordmark: var(--hcl-brand-1, #fff);
+  --nav-burger:   var(--hcl-brand-1, #fff);
+  --nav-burger:   var(--hcl-brand-1, #fff);
+}
+}
+
+
+/* Daten-Ton auf dem Header selbst */
+/* Daten-Ton auf dem Header selbst */
+#site-header[data-tone="light"]{
+#site-header[data-tone="light"]{
+  --nav-wordmark: var(--hcl-brand-12, #0b0d0c);
+  --nav-wordmark: var(--hcl-brand-12, #0b0d0c);
+  --nav-burger:   var(--hcl-brand-12, #0b0d0c);
+  --nav-burger:   var(--hcl-brand-12, #0b0d0c);
+}
+}
+#site-header[data-tone="dark"]{
+#site-header[data-tone="dark"]{
+  --nav-wordmark: var(--hcl-brand-1, #fff);
+  --nav-wordmark: var(--hcl-brand-1, #fff);
+  --nav-burger:   var(--hcl-brand-1, #fff);
+  --nav-burger:   var(--hcl-brand-1, #fff);
+}
+}
+
+
+/* Root-Fallback: falls der Builder den Header austauscht, ziehen wir vom <html> */
+/* Root-Fallback: falls der Builder den Header austauscht, ziehen wir vom <html> */
+html[data-tone="light"] #site-header{
+html[data-tone="light"] #site-header{
+  --nav-wordmark: var(--hcl-brand-12, #0b0d0c);
+  --nav-wordmark: var(--hcl-brand-12, #0b0d0c);
+  --nav-burger:   var(--hcl-brand-12, #0b0d0c);
+  --nav-burger:   var(--hcl-brand-12, #0b0d0c);
+}
+}
+html[data-tone="dark"] #site-header{
+html[data-tone="dark"] #site-header{
+  --nav-wordmark: var(--hcl-brand-1, #fff);
+  --nav-wordmark: var(--hcl-brand-1, #fff);
+  --nav-burger:   var(--hcl-brand-1, #fff);
+  --nav-burger:   var(--hcl-brand-1, #fff);
+}
+}
+
+
+/* Wordmark: Text + evtl. SVG */
+/* Wordmark: Text + evtl. SVG */
+.brand-wordmark,
+.brand-wordmark,
+.brand-wordmark *{
+.brand-wordmark *{
+  color:  var(--nav-wordmark) !important;
+  color:  var(--nav-wordmark) !important;
+  fill:   var(--nav-wordmark) !important;   /* für SVG-Logos */
+  fill:   var(--nav-wordmark) !important;   /* für SVG-Logos */
+  stroke: var(--nav-wordmark) !important;   /* falls Linienlogo */
+  stroke: var(--nav-wordmark) !important;   /* falls Linienlogo */
+}
+}
+
+
+/* Burger nutzt currentColor → einfach Farbe setzen */
+/* Burger nutzt currentColor → einfach Farbe setzen */
+#nav-trigger,
+#nav-trigger,
+.a83-burger,
+.a83-burger,
+.nav-toggle{
+.nav-toggle{
+  color: var(--nav-burger) !important;
+  color: var(--nav-burger) !important;
+}
+}
