@@ -1,0 +1,45 @@
+/* FIXED HEADER + Wordmark + Burger (ohne Effekte) */
+* { box-sizing: border-box; }
+html,body { margin:0; }
+
+#site-header{
+  position: fixed; inset: 0 0 auto 0;
+  height: var(--header-h);
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 10px 16px; z-index: 100;
+  background: transparent; /* wir ändern nur Farbe der Icons per data-tone */
+}
+
+.brand-wordmark{
+  font: 700 18px/1.1 system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color: var(--nav-wordmark, #fff);
+  text-decoration:none; opacity:.85; letter-spacing:.02em;
+}
+
+.burger-slot{ display:flex; align-items:center; gap:12px; }
+
+#nav-trigger{
+  all: unset; cursor: pointer; display: inline-grid; place-items:center;
+  width: 32px; height: 32px; color: var(--nav-burger, #fff);
+}
+
+/* simples Burger-Icon */
+.a83-burger-box{ position:relative; width:22px; height:16px; }
+.a83-burger-inner,
+.a83-burger-inner::before,
+.a83-burger-inner::after{
+  content:""; position:absolute; left:0; right:0; height:2px; background: currentColor; border-radius:2px;
+  transform-origin: center; transition: transform 240ms var(--ease), opacity 160ms var(--ease);
+}
+.a83-burger-inner{ top:50%; transform: translateY(-50%); }
+.a83-burger-inner::before{ top:0; }
+.a83-burger-inner::after{ bottom:0; }
+
+/* open -> X */
+#nav-trigger[aria-expanded="true"] .a83-burger-inner{ transform: translateY(-50%) rotate(45deg); }
+#nav-trigger[aria-expanded="true"] .a83-burger-inner::before{ transform: translateY(8px) rotate(-90deg); }
+#nav-trigger[aria-expanded="true"] .a83-burger-inner::after{ transform: translateY(-8px) rotate(-90deg); }
+
+/* Tone Bridge (nur Farben) */
+#site-header[data-tone="light"]{ --nav-wordmark:#0b0d0c; --nav-burger:#0b0d0c; }
+#site-header[data-tone="dark"]{  --nav-wordmark:#ffffff; --nav-burger:#ffffff; }

@@ -1,0 +1,25 @@
+/* Deko-Brandmark unter dem Karteninhalt */
+#nav-overlay .nav-card{ position: relative; overflow: hidden; }
+#nav-overlay .nav-card #nav-brandmark{
+  position: absolute; inset: 0;
+  z-index: 0; pointer-events: none; opacity: .08;
+  /* Maske mit lokalem SVG (Pfad relativ zu isolate/index.html) */
+  -webkit-mask: url('../logo-a83-white.svg') no-repeat center / min(72%, 520px) auto;
+          mask: url('../logo-a83-white.svg') no-repeat center / min(72%, 520px) auto;
+  background:
+    radial-gradient(40% 40% at 50% 46%, rgba(255,255,255,.18), transparent 62%),
+    conic-gradient(from 0deg, rgba(255,255,255,.10), transparent 70%);
+  transition: opacity .35s var(--ease), transform .35s var(--ease), filter .35s var(--ease);
+}
+
+/* Öffnen/Schließen subtil animieren (rein optisch) */
+html[data-nav-state="opening"] #nav-overlay .nav-card #nav-brandmark{ opacity:.12; transform: scale(1.02); }
+html[data-nav-state="closing"] #nav-overlay .nav-card #nav-brandmark{ opacity:0; transform: scale(.99); filter: blur(1px) saturate(1.02); }
+
+/* Fallback, wenn mask nicht unterstützt wird */
+@supports not (mask: url('#')){
+  #nav-overlay .nav-card #nav-brandmark{
+    background: url('../logo-a83-white.svg') no-repeat center / min(72%, 520px) auto,
+                radial-gradient(40% 40% at 50% 46%, rgba(255,255,255,.18), transparent 62%);
+  }
+}

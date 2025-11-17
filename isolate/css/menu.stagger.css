@@ -1,0 +1,31 @@
+/* Einfache Stagger-Animation für Menülinks + sanftes Hover */
+.nav-menu > a {
+  opacity: 0;
+  transform: translateY(6px);
+  filter: blur(2px);
+  transition: opacity .32s var(--ease), transform .32s var(--ease), filter .32s var(--ease);
+}
+
+/* sichtbar in open */
+html[data-nav-state="open"] .nav-menu > a {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Stagger-Delays 1..6 (erweitere bei Bedarf) */
+html[data-nav-state="open"] .nav-menu > *:nth-child(1){ transition-delay: .08s; }
+html[data-nav-state="open"] .nav-menu > *:nth-child(2){ transition-delay: .14s; }
+html[data-nav-state="open"] .nav-menu > *:nth-child(3){ transition-delay: .20s; }
+html[data-nav-state="open"] .nav-menu > *:nth-child(4){ transition-delay: .26s; }
+html[data-nav-state="open"] .nav-menu > *:nth-child(5){ transition-delay: .32s; }
+html[data-nav-state="open"] .nav-menu > *:nth-child(6){ transition-delay: .38s; }
+
+/* Schließen: schnell raus */
+html[data-nav-state="closing"] .nav-menu > *{
+  transition: opacity .18s var(--ease), transform .18s var(--ease), filter .18s var(--ease);
+  opacity: 0; transform: translateY(4px); filter: blur(2px);
+}
+
+/* Sanftes Hover (ohne Glitch) */
+.nav-menu > a:hover { text-decoration: underline; opacity: 1; }

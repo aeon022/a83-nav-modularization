@@ -1,0 +1,61 @@
+/* OVERLAY + CARD – minimal, keine Glitches */
+#nav-overlay{
+  position: fixed; inset:0; z-index: 999;
+  display: none; pointer-events: none;
+}
+
+/* Backdrop */
+#nav-overlay::before{
+  content:""; position: absolute; inset:0;
+  background: rgba(0,0,0,.5);
+  opacity:0; transition: opacity var(--t-backdrop) var(--ease);
+}
+
+/* Karte */
+#nav-overlay .nav-card{
+  position: absolute;
+  top: var(--card-top, calc(var(--header-h) + 10px));
+  right: var(--card-right, 12px);
+  left: auto !important;                /* <- links hart neutralisieren */
+  transform-origin: top right;          /* bleibt wie gehabt */
+  width: min(520px, 92vw);
+  transform-origin: top right; /* NEU: Animation/Scaling vom Burger-Eck */
+  max-height: calc(100vh - var(--header-h) - 24px);
+  overflow: auto;
+  background: color-mix(in oklab, var(--brand) 12%, rgba(12,16,14,.92));
+  border: 1px solid color-mix(in oklab, var(--brand) 35%, rgba(229,70,102,.28));
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  opacity: 0; transform: translate(6px,-4px) scale(.96);
+  transition: transform var(--t-card-in) var(--ease), opacity var(--t-card-in) var(--ease), filter var(--t-card-in) var(--ease);
+  filter: blur(6px);
+  padding: 14px;
+}
+
+/* Sichtbar in open/opening */
+html[data-nav-state="opening"] #nav-overlay,
+html[data-nav-state="open"]    #nav-overlay{
+  display:block; pointer-events:auto;
+}
+html[data-nav-state="opening"] #nav-overlay::before,
+html[data-nav-state="open"]    #nav-overlay::before{ opacity:1; }
+
+html[data-nav-state="opening"] #nav-overlay .nav-card,
+html[data-nav-state="open"]    #nav-overlay .nav-card{
+  opacity:1; transform: none; filter: none;
+}
+
+/* Schließen */
+html[data-nav-state="closing"] #nav-overlay .nav-card{
+  transition-duration: var(--t-card-out);
+  opacity:0; transform: translate(6px,-4px) scale(.965); filter: blur(4px);
+}
+
+/* Head + Menu minimal */
+.nav-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:10px; }
+.nav-head h1{ margin:0; font: 600 16px/1.1 system-ui; color:#fff; }
+.nav-close-slot{}
+.nav-close-btn{ all:unset; cursor:pointer; color:#fff; width:32px; height:32px; display:grid; place-items:center; }
+.nav-menu{ display:grid; gap:10px; margin-top:12px; }
+.nav-menu a{ color:#fff; text-decoration:none; font: 500 18px/1.3 system-ui; opacity:.95; }
+.nav-menu a:hover{ text-decoration: underline; }

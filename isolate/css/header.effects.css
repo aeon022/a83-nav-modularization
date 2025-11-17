@@ -1,0 +1,23 @@
+/* Wordmark kleine Hover-Betonung (keine Pseudos, kein Blend-Mode) */
+.brand-wordmark{ transition: opacity .2s var(--ease), filter .2s var(--ease); opacity: .9; }
+.brand-wordmark:hover{ opacity: 1; filter: saturate(1.1) contrast(1.02); }
+
+/* Burger: Mini-Shake + Edge-Glow, aber rein dekorativ */
+#nav-trigger{ position: relative; transition: opacity .2s var(--ease), transform .2s var(--ease); opacity:.9; }
+#nav-trigger:hover{ opacity: 1; }
+
+#nav-trigger:hover::before,
+#nav-trigger:hover::after{
+  content: ""; position: absolute; inset: -2px; border-radius: 8px; pointer-events: none; mix-blend-mode: normal;
+}
+#nav-trigger:hover::before{ box-shadow: 2px 0 0 rgba(0,255,255,.35) inset; }
+#nav-trigger:hover::after { box-shadow:-2px 0 0 rgba(255,0,128,.35) inset; }
+
+/* Mini-Recoil beim Close */
+#nav-trigger.is-recoiling{ animation: a83-burger-recoil .38s var(--ease) both; }
+@keyframes a83-burger-recoil{
+  0%{ transform: scale(1) rotate(0deg); }
+  22%{ transform: scale(.96) rotate(-.4deg); }
+  60%{ transform: scale(1.02) rotate(.3deg); }
+  100%{ transform: scale(1) rotate(0deg); }
+}

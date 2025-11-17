@@ -1,0 +1,8 @@
+/* LOCK + Anti-Smooth während Overlay – das killt i.d.R. den "Jump" */
+html.nav-lock{ overflow:hidden; padding-right: var(--sbw, 0); }
+html[data-nav-state="opening"],
+html[data-nav-state="open"],
+html[data-nav-state="closing"]{
+  scroll-behavior: auto !important;
+  overscroll-behavior: none !important;
+}

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>A83 – Isolate</title>
+
+  <link rel="stylesheet" href="css/tokens.css"/>
+  <link rel="stylesheet" href="css/header.css"/>
+  <link rel="stylesheet" href="css/header.effects.css"/>
+  <link rel="stylesheet" href="css/overlay.css"/>
+  <link rel="stylesheet" href="css/menu.stagger.css"/>
+  <link rel="stylesheet" href="css/card.pulse.css"/>
+  <link rel="stylesheet" href="css/links.rgb-split.css"/>
+  <link rel="stylesheet" href="css/card.watermark.css"/>
+  <link rel="stylesheet" href="css/fixes.css"/>
+
+  <style>
+    /* Nur Demo-Optik */
+    main{ margin-top: var(--header-h); }
+    section{ height: 120vh; display:grid; place-items:center; font: 600 28px/1 system-ui; }
+    [data-tone="dark"]{ background:#0c0f0e; color:#fff; }
+    [data-tone="light"]{ background:#f2f4f3; color:#0b0d0c; }
+  </style>
+</head>
+<body>
+
+  <header id="site-header" data-tone="dark">
+    <a class="brand-wordmark" href="#" onclick="return false;">abteilung83</a>
+    <div class="burger-slot">
+      <button id="nav-trigger" aria-expanded="false" aria-controls="nav-overlay">
+        <span class="a83-burger-box"><span class="a83-burger-inner"></span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section data-tone="dark">Hero (dark)</section>
+    <section data-tone="light">Light Section</section>
+    <section data-tone="dark">Footer (dark)</section>
+  </main>
+
+  <div id="nav-overlay" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="nav-card">
+        <div id="nav-brandmark" aria-hidden="true"></div> <!-- neu -->
+      <div class="nav-head">
+        <h1>Menu</h1>
+        <div class="nav-close-slot"></div>
+      </div>
+      <nav class="nav-menu">
+        <a href="#one" class="nav-link" data-title="One">One</a>
+        <a href="#two" class="nav-link" data-title="Two">One</a>
+        <a href="#three" class="nav-link" data-title="Three">One</a>
+      </nav>
+    </div>
+  </div>
+
+  <script type="module" src="js/scrolltone.js"></script>
+  <script type="module" src="js/nav.js"></script>
+</body>
+</html>

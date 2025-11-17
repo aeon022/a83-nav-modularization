@@ -1,0 +1,20 @@
+/* dezentes RGB-Split beim Hover – pure Deko */
+.nav-menu > a{
+  position: relative;
+}
+.nav-menu > a::before,
+.nav-menu > a::after{
+  content: attr(data-title);
+  position: absolute; left: 0; top: 0;
+  pointer-events: none; opacity: 0; mix-blend-mode: normal;
+  transition: opacity .18s var(--ease), transform .18s var(--ease);
+}
+.nav-menu > a::before{ color: #0ff; transform: translateX(0); }
+.nav-menu > a::after { color: #f0f; transform: translateX(0); }
+
+.nav-menu > a:hover::before,
+.nav-menu > a:hover::after{
+  opacity: .6;
+}
+.nav-menu > a:hover::before{ transform: translateX(1px); }
+.nav-menu > a:hover::after { transform: translateX(-1px); }

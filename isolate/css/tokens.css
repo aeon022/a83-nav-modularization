@@ -1,0 +1,16 @@
+/* TOKENS – nur Variablen, keine Layouts */
+:root{
+  --brand: #e54666;
+  --ease: cubic-bezier(.2,.8,.2,1);
+
+  /* Zeiten (bewusst kurz gehalten) */
+  --t-card-in: 320ms;
+  --t-card-out: 280ms;
+  --t-backdrop: 220ms;
+
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+
+  /* Header-Höhe (für top offset) */
+  --header-h: 56px;
+}
